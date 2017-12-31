@@ -1,0 +1,9 @@
+kafka0 ansible_host=localhost ansible_port=2100 ansible_connection=ssh ansible_ssh_user=ubuntu
+kafka1 ansible_host=localhost ansible_port=2101 ansible_connection=ssh ansible_ssh_user=ubuntu
+kafka2 ansible_host=localhost ansible_port=2102 ansible_connection=ssh ansible_ssh_user=ubuntu
+
+[kafka]
+kafka0
+kafka1
+kafka2
+
