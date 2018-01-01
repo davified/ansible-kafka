@@ -7,10 +7,9 @@
     apt:
       name: openjdk-8-jdk-headless
       state: present
-  - name: download kafka
-    get_url:
-      url: http://apache.mirrors.ionfish.org/kafka/1.0.0/kafka_2.12-1.0.0.tgz
-      dest: /home/ubuntu/kafka_2.12-1.0.0.tgz
-      mode: 0400
-      checksum: sha1:64BD50AE5B3E99D110226B9B8820DF4F5009E306
+  - name: unpack kafka
+    unarchive:
+      src: /vagrant_data/kafka_2.12-1.0.0.tgz
+      dest: /home/ubuntu
+      remote_src: yes
 
