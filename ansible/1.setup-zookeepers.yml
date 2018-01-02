@@ -1,0 +1,21 @@
+---
+- hosts: kafka
+  tasks:
+  - name: mkdir zookeeper dir
+    file:
+      path: /home/ubuntu/zookeeper
+      state: directory
+      mode: 0700
+  - name: set zookeeper id
+    copy:
+      src: /vagrant_data/myid
+      dest: /home/ubuntu/zookeeper/myid
+      mode: 0400
+      remote_src: yes
+  - name: copy zookeeper.properties
+    copy:
+      src: /vagrant_data/zookeeper.properties
+      dest: /home/ubuntu/kafka_2.12-1.0.0/config/zookeeper.properties
+      mode: 0400
+      remote_src: yes
+
