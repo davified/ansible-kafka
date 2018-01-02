@@ -12,4 +12,10 @@
       src: /vagrant_data/kafka_2.12-1.0.0.tgz
       dest: /home/ubuntu
       remote_src: yes
+  - name: copy kafka server.properties
+    copy:
+      src: /vagrant_data/server.properties
+      dest: /home/ubuntu/kafka_2.12-1.0.0/config/server.properties
+      mode: 0400
+      remote_src: yes
 
