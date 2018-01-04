@@ -1,0 +1,14 @@
+---
+- hosts: kafka
+  tasks:
+  - name: start zookeeper ensembl
+    shell: nohup bin/zookeeper-server-start.sh config/zookeeper.properties &
+    args:
+      chdir: /home/ubuntu/kafka_2.12-1.0.0
+  - name: wait for zookeeper to start
+    command: sleep 5
+  - name: start kafka cluster
+    command: bin/kafka-server-start.sh -daemon config/server.properties
+    args:
+      chdir: /home/ubuntu/kafka_2.12-1.0.0
+
