@@ -36,6 +36,7 @@ Vagrant.configure(2) do |config|
   # using a specific IP.
    config.vm.network "private_network", ip: "192.168.100." + ENV['IP'], auto_config: true
    config.vm.network "forwarded_port", guest: 22, host: ("2" + ENV['IP']).to_i, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
+   config.vm.hostname = "kafka" + ENV['IP']
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -78,5 +79,6 @@ Vagrant.configure(2) do |config|
      sudo apt-get install -y python
      cat .ssh/authorized_keys /vagrant_data/key.txt > authorized_keys
      mv authorized_keys .ssh/authorized_keys
+     sh /vagrant_data/set_etc_hosts.sh
    SHELL
 end
