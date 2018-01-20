@@ -1,6 +1,12 @@
 ---
 - hosts: kafka
   tasks:
+  - name: install ntp
+    become: true
+    become_method: sudo
+    apt:
+      name: ntp
+      state: present
   - name: install jdk8
     become: true
     become_method: sudo

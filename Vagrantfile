@@ -34,7 +34,7 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-   config.vm.network "private_network", ip: "192.168.100." + ENV['IP'], auto_config: true
+   config.vm.network "private_network", ip: "192.168.100." + ENV['IP'], auto_config: true, nic_type: "virtio"
    config.vm.network "forwarded_port", guest: 22, host: ("2" + ENV['IP']).to_i, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
    config.vm.hostname = "kafka" + ENV['IP']
 
